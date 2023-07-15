@@ -2,26 +2,26 @@
 
 namespace App\Repository;
 
-use App\Entity\Années;
+use App\Entity\Annee;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @extends ServiceEntityRepository<Années>
+ * @extends ServiceEntityRepository<Annee>
  *
- * @method Années|null find($id, $lockMode = null, $lockVersion = null)
- * @method Années|null findOneBy(array $criteria, array $orderBy = null)
- * @method Années[]    findAll()
- * @method Années[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method Annee|null find($id, $lockMode = null, $lockVersion = null)
+ * @method Annee|null findOneBy(array $criteria, array $orderBy = null)
+ * @method Annee[]    findAll()
+ * @method Annee[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class AnnéesRepository extends ServiceEntityRepository
+class AnneeRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, Années::class);
+        parent::__construct($registry, Annee::class);
     }
 
-    public function save(Années $entity, bool $flush = false): void
+    public function save(Annee $entity, bool $flush = false): void
     {
         $this->getEntityManager()->persist($entity);
 
@@ -30,7 +30,7 @@ class AnnéesRepository extends ServiceEntityRepository
         }
     }
 
-    public function remove(Années $entity, bool $flush = false): void
+    public function remove(Annee $entity, bool $flush = false): void
     {
         $this->getEntityManager()->remove($entity);
 
@@ -40,7 +40,7 @@ class AnnéesRepository extends ServiceEntityRepository
     }
 
 //    /**
-//     * @return Années[] Returns an array of Années objects
+//     * @return Annee[] Returns an array of Annee objects
 //     */
 //    public function findByExampleField($value): array
 //    {
@@ -54,7 +54,7 @@ class AnnéesRepository extends ServiceEntityRepository
 //        ;
 //    }
 
-//    public function findOneBySomeField($value): ?Années
+//    public function findOneBySomeField($value): ?Annee
 //    {
 //        return $this->createQueryBuilder('a')
 //            ->andWhere('a.exampleField = :val')

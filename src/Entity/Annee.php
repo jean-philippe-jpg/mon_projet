@@ -2,11 +2,11 @@
 
 namespace App\Entity;
 
-use App\Repository\AnnéesRepository;
+use App\Repository\AnneeRepository;
 use Doctrine\ORM\Mapping as ORM;
 
-#[ORM\Entity(repositoryClass: AnnéesRepository::class)]
-class Années
+#[ORM\Entity(repositoryClass: AnneeRepository::class)]
+class Annee
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -16,8 +16,12 @@ class Années
     #[ORM\Column]
     private ?int $libelle = null;
 
-    #[ORM\Column(length: 30)]
+    #[ORM\Column(length: 255)]
     private ?string $no = null;
+
+    #[ORM\ManyToOne(inversedBy: 'Annees')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Marque $marque = null;
 
     public function getId(): ?int
     {
@@ -44,6 +48,18 @@ class Années
     public function setNo(string $no): static
     {
         $this->no = $no;
+
+        return $this;
+    }
+
+    public function getMarque(): ?Marque
+    {
+        return $this->marque;
+    }
+
+    public function setMarque(?Marque $marque): static
+    {
+        $this->marque = $marque;
 
         return $this;
     }

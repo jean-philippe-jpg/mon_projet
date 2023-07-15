@@ -2,11 +2,11 @@
 
 namespace App\Entity;
 
-use App\Repository\ModeleRepository;
+use App\Repository\ModelRepository;
 use Doctrine\ORM\Mapping as ORM;
 
-#[ORM\Entity(repositoryClass: ModeleRepository::class)]
-class Modele
+#[ORM\Entity(repositoryClass: ModelRepository::class)]
+class Model
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -16,8 +16,9 @@ class Modele
     #[ORM\Column(length: 30)]
     private ?string $libelle = null;
 
-    #[ORM\Column(length: 30)]
-    private ?string $no = null;
+    #[ORM\ManyToOne(inversedBy: 'modeles')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Marque $marque = null;
 
     public function getId(): ?int
     {
@@ -36,14 +37,14 @@ class Modele
         return $this;
     }
 
-    public function getNo(): ?string
+    public function getMarque(): ?Marque
     {
-        return $this->no;
+        return $this->marque;
     }
 
-    public function setNo(string $no): static
+    public function setMarque(?Marque $marque): static
     {
-        $this->no = $no;
+        $this->marque = $marque;
 
         return $this;
     }
