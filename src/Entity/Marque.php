@@ -18,16 +18,16 @@ class Marque
     #[ORM\Column(length: 30)]
     private ?string $libelle = null;
 
-    #[ORM\OneToMany(mappedBy: 'marque', targetEntity: model::class)]
+    #[ORM\OneToMany(mappedBy: 'marque', targetEntity: Model::class)]
     private Collection $modeles;
 
-    #[ORM\OneToMany(mappedBy: 'marque', targetEntity: prix::class)]
+    #[ORM\OneToMany(mappedBy: 'marque', targetEntity: Prix::class)]
     private Collection $prixs;
 
     #[ORM\OneToMany(mappedBy: 'marque', targetEntity: Annee::class)]
     private Collection $Annees;
 
-    #[ORM\OneToMany(mappedBy: 'marque', targetEntity: km::class)]
+    #[ORM\OneToMany(mappedBy: 'marque', targetEntity: Km::class)]
     private Collection $kms;
 
     public function __construct()
