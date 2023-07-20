@@ -2,26 +2,25 @@
 
 namespace App\DataFixtures;
 
-use App\Entity\Marque;
+
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
+use App\Entity\Vehicule;
 
-class AppFixtures extends Fixture
-{
+class AppFixtures extends Fixture 
+    {
+
     public function load(ObjectManager $manager): void
     {
-         $marque1 = new Marque();
-         $marque1 ->setLibelle('mercedes');
-         $manager->persist($marque1);
+        
+           
+           $vehicule = new Vehicule();
+            $vehicule -> setMarque('renault'); 
+            $manager -> persist($vehicule);
 
-         $marque2 = new Marque();
-         $marque2 ->setLibelle('porshe');
-         $manager->persist($marque2);
+           
+           $manager->flush();
 
-         $marque3 = new Marque();
-         $marque3 ->setLibelle('volkswagen');
-         $manager->persist($marque3);
+        }
 
-         $manager->flush();
     }
-}
