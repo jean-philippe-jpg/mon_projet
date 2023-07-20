@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello VehiculesController!{% endblock %}
+{% block title %}Marques{% endblock %}
 
 
 
@@ -10,11 +10,30 @@
     .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
 </style>
 
-<div class="example-wrapper ">
+<div >
     
-
-    <h1> Annonce Vehicules Occasions </h1>
-
-
+        <table class="table">
+            <thead>
+                <tr>
+                <th scope="col">#</th>
+                <th scope="col">Marque</th>
+                <th scope="col"></th>
+                </tr>
+            </head>
+            <tbody>
+            {% for vehicules in vehicule %}
+                <tr>
+                    <td scope="row">{{vehicules.id}}</td>
+                    <td> {{vehicules.Marque}}</td>
+                <td>
+                    <a href="{{path('vehicules_show', {'id': vehicules.id})}}" class="btn btn_primary">Detail</a>
+                    <a href="{{path('vehicules_edit', {'id': vehicules.id})}}" class="btn btn_primary">Modifier</a>
+                    <a href="{{path('vehicules_delete', {'id': vehicule.id})}}" class="btn btn_primary">Suppreimer</a>
+                </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+                    <a href="{{path('vehicules_create')}}" class="btn btn_primary">Ajouter</a>
 </div>
 {% endblock %}
